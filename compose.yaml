@@ -14,10 +14,10 @@ services:
     ports:
       - "7878:7878"
     volumes:
-      - ./radarr:/config
-      - ./host/data:/data
+      - /radarr:/config
+      - /data:/data
     environment:
-      - PUID=111
+      - PUID=1111
       - PGID=321
       - UMASK=002
       - TZ=America/New_York
@@ -29,10 +29,10 @@ services:
     ports:
       - "8989:8989"
     volumes:
-      - ./sonarr:/config
-      - ./host/data:/data
+      - /sonarr:/config
+      - /data:/data
     environment:
-      - PUID=222
+      - PUID=2222
       - PGID=321
       - UMASK=002
       - TZ=America/New_York
@@ -44,10 +44,10 @@ services:
     ports:
       - "8686:8686"
     volumes:
-      - ./lidarr:/config
-      - ./host/data:/data
+      - /lidarr:/config
+      - /data:/data
     environment:
-      - PUID=333
+      - PUID=3333
       - PGID=321
       - UMASK=002
       - TZ=America/New_York
@@ -59,10 +59,10 @@ services:
     ports:
       - "8787:8787"
     volumes:
-      - ./readarr:/config
-      - ./host/data:/data
+      - /readarr:/config
+      - /data:/data
     environment:
-      - PUID=444
+      - PUID=4444
       - PGID=321
       - UMASK=002
       - TZ=America/New_York
@@ -76,10 +76,9 @@ services:
     ports:
       - "9696:9696"
     volumes:
-      - ./prowlarr:/config
-      - ./host/data:/data
+      - /prowlarr:/config
     environment:
-      - PUID=666
+      - PUID=6666
       - PGID=321
       - UMASK=002
       - TZ=America/New_York
@@ -91,10 +90,10 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./sabnzbd:/config
-      - ./host/data/usenet:/data/usenet
+      - /sabnzbd:/config
+      - /data/usenet:/data/usenet
     environment:
-      - PUID=333
+      - PUID=7777
       - PGID=321
       - UMASK=002
       - TZ=America/New_York
