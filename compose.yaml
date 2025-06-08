@@ -1,0 +1,102 @@
+networks:
+  servarrnetwork:
+    name: servarrnetwork
+    ipam:
+      config:
+        - subnet: 172.69.0.0/24
+
+services:
+
+  # Radarr
+  radarr:
+    container_name: radarr
+    image: ghcr.io/hotio/radarr
+    ports:
+      - "7878:7878"
+    volumes:
+      - ./radarr:/config
+      - ./host/data:/data
+    environment:
+      - PUID=111
+      - PGID=321
+      - UMASK=002
+      - TZ=America/New_York
+
+  # Sonarr
+  sonarr:
+    container_name: sonarr
+    image: ghcr.io/hotio/sonarr
+    ports:
+      - "8989:8989"
+    volumes:
+      - ./sonarr:/config
+      - ./host/data:/data
+    environment:
+      - PUID=222
+      - PGID=321
+      - UMASK=002
+      - TZ=America/New_York
+
+  # Lidarr
+  lidarr:
+    container_name: lidarr
+    image: ghcr.io/hotio/lidarr
+    ports:
+      - "8686:8686"
+    volumes:
+      - ./lidarr:/config
+      - ./host/data:/data
+    environment:
+      - PUID=333
+      - PGID=321
+      - UMASK=002
+      - TZ=America/New_York
+
+  # Readarr
+  readarr:
+    container_name: readarr
+    image: ghcr.io/hotio/readarr
+    ports:
+      - "8787:8787"
+    volumes:
+      - ./readarr:/config
+      - ./host/data:/data
+    environment:
+      - PUID=444
+      - PGID=321
+      - UMASK=002
+      - TZ=America/New_York
+
+  # Whisparr
+
+  # Prowlarr
+  prowlarr:
+    container_name: prowlarr
+    image: ghcr.io/hotio/prowlarr
+    ports:
+      - "9696:9696"
+    volumes:
+      - ./prowlarr:/config
+      - ./host/data:/data
+    environment:
+      - PUID=666
+      - PGID=321
+      - UMASK=002
+      - TZ=America/New_York
+
+  # SABnzbd
+  sabnzbd:
+    container_name: sabnzbd
+    image: ghcr.io/hotio/sabnzbd
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./sabnzbd:/config
+      - ./host/data/usenet:/data/usenet
+    environment:
+      - PUID=333
+      - PGID=321
+      - UMASK=002
+      - TZ=America/New_York
+      - WEBUI_PORTS=8080/tcp,8080/udp
+      - ARGS
