@@ -11,11 +11,12 @@ services:
   radarr:
     container_name: radarr
     image: ghcr.io/hotio/radarr
+    restart: unless-stopped
     ports:
       - "7878:7878"
     volumes:
-      - /radarr:/config
-      - /data:/data
+      - ./radarr:/config
+      - /mnt/nfs/unas/servarr:/data
     environment:
       - PUID=1111
       - PGID=321
@@ -26,11 +27,12 @@ services:
   sonarr:
     container_name: sonarr
     image: ghcr.io/hotio/sonarr
+    restart: unless-stopped
     ports:
       - "8989:8989"
     volumes:
-      - /sonarr:/config
-      - /data:/data
+      - ./sonarr:/config
+      - /mnt/nfs/unas/servarr:/data
     environment:
       - PUID=2222
       - PGID=321
@@ -41,11 +43,12 @@ services:
   lidarr:
     container_name: lidarr
     image: ghcr.io/hotio/lidarr
+    restart: unless-stopped
     ports:
       - "8686:8686"
     volumes:
-      - /lidarr:/config
-      - /data:/data
+      - ./lidarr:/config
+      - /mnt/nfs/unas/servarr:/data
     environment:
       - PUID=3333
       - PGID=321
@@ -56,11 +59,12 @@ services:
   readarr:
     container_name: readarr
     image: ghcr.io/hotio/readarr
+    restart: unless-stopped
     ports:
       - "8787:8787"
     volumes:
-      - /readarr:/config
-      - /data:/data
+      - ./readarr:/config
+      - /mnt/nfs/unas/servarr:/data
     environment:
       - PUID=4444
       - PGID=321
@@ -73,10 +77,11 @@ services:
   prowlarr:
     container_name: prowlarr
     image: ghcr.io/hotio/prowlarr
+    restart: unless-stopped
     ports:
       - "9696:9696"
     volumes:
-      - /prowlarr:/config
+      - ./prowlarr:/config
     environment:
       - PUID=6666
       - PGID=321
@@ -87,11 +92,12 @@ services:
   sabnzbd:
     container_name: sabnzbd
     image: ghcr.io/hotio/sabnzbd
+    restart: unless-stopped
     ports:
       - "8080:8080"
     volumes:
-      - /sabnzbd:/config
-      - /data/usenet:/data/usenet
+      - ./sabnzbd:/config
+      - /mnt/nfs/unas/servarr/usenet:/data/usenet
     environment:
       - PUID=7777
       - PGID=321
